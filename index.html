@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SecurePass - Надежный Генератор Паролей Онлайн</title>
+    
+    <!-- Yandex.RTB Загрузчик -->
+    <script>window.yaContextCb=window.yaContextCb||[]</script>
+    <script src="https://yandex.ru/ads/system/context.js" async></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .ad-container {
             min-height: 100px;
-            background: rgba(243, 244, 246, 0.5);
-            border: 1px dashed #cbd5e1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin: 1.5rem 0;
-            border-radius: 0.5rem;
+            display: flex;
+            justify-content: center;
         }
         .gradient-bg {
             background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
@@ -24,7 +25,7 @@
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
 
-    <!-- Навигация (Оставили только логотип для чистоты) -->
+    <!-- Навигация -->
     <header class="bg-white border-b border-slate-200 py-4 shadow-sm">
         <div class="container mx-auto px-4">
             <div class="flex items-center space-x-2">
@@ -36,9 +37,18 @@
 
     <main class="flex-grow container mx-auto px-4 py-8 max-w-4xl">
         
-        <!-- Рекламный блок 1 -->
+        <!-- Рекламный блок 1 (Верхний баннер) -->
         <div class="ad-container">
-            <span class="text-xs text-slate-400 uppercase tracking-widest text-center px-4">Место для рекламного кода (Верхний баннер)</span>
+            <!-- Yandex.RTB R-A-18341944-1 -->
+            <div id="yandex_rtb_R-A-18341944-1_top"></div>
+            <script>
+            window.yaContextCb.push(() => {
+                Ya.Context.AdvManager.render({
+                    "blockId": "R-A-18341944-1",
+                    "renderTo": "yandex_rtb_R-A-18341944-1_top"
+                })
+            })
+            </script>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
@@ -96,20 +106,20 @@
                 </div>
             </div>
 
-            <!-- Правая колонка (Реклама) -->
+            <!-- Правая колонка -->
             <div class="space-y-6">
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                     <h3 class="font-bold text-slate-800 mb-4 text-sm uppercase tracking-wide">Почему SecurePass?</h3>
                     <ul class="text-xs text-slate-500 space-y-3">
                         <li class="flex items-start"><i class="fas fa-check text-green-500 mt-0.5 mr-2"></i> Без передачи на сервер</li>
-                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-0.5 mr-2"></i> Открытый исходный код</li>
-                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-0.5 mr-2"></i> Максимальная энтропия</li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-0.5 mr-2"></i> Открытый код</li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-0.5 mr-2"></i> Максимальная защита</li>
                     </ul>
                 </div>
 
-                <!-- Место для вертикальной рекламы -->
-                <div class="ad-container" style="min-height: 400px;">
-                    <span class="text-xs text-slate-400 uppercase tracking-widest text-center px-4">Вертикальный рекламный блок (Skyscraper)</span>
+                <!-- Место для боковой рекламы (если будет другой блок) -->
+                <div class="bg-slate-100 rounded-2xl flex items-center justify-center p-4 border border-dashed border-slate-300 min-h-[250px]">
+                    <span class="text-slate-400 text-[10px] uppercase text-center tracking-widest">Здесь может быть ваш баннер</span>
                 </div>
             </div>
         </div>
@@ -120,21 +130,27 @@
             <p class="mb-4">
                 Наш сервис использует современные алгоритмы генерации случайных чисел в браузере. Это означает, что ни один байт информации не покидает ваш компьютер. Мы помогаем защитить ваши данные от взлома, создавая комбинации, которые практически невозможно подобрать методом перебора.
             </p>
-            <p>
-                Для максимальной защиты используйте не менее 16 символов и разные наборы знаков. Сохраняйте пароли в проверенных менеджерах паролей.
-            </p>
         </section>
 
-        <!-- Рекламный блок 2 -->
+        <!-- Рекламный блок 2 (Нижний баннер) -->
         <div class="ad-container">
-            <span class="text-xs text-slate-400 uppercase tracking-widest text-center px-4">Нижний рекламный блок</span>
+            <!-- Yandex.RTB R-A-18341944-1 -->
+            <div id="yandex_rtb_R-A-18341944-1_bottom"></div>
+            <script>
+            window.yaContextCb.push(() => {
+                Ya.Context.AdvManager.render({
+                    "blockId": "R-A-18341944-1",
+                    "renderTo": "yandex_rtb_R-A-18341944-1_bottom"
+                })
+            })
+            </script>
         </div>
 
     </main>
 
     <footer class="bg-slate-900 text-slate-400 py-8 mt-12">
         <div class="container mx-auto px-4 text-center text-xs">
-            <p class="mb-2 tracking-wide font-medium">SECUREPASS TOOLS &copy; 2024</p>
+            <p class="mb-2 tracking-wide font-medium">SECUREPASS TOOLS &copy; 2026</p>
             <p>Статический инструмент для повышения вашей безопасности</p>
         </div>
     </footer>
@@ -179,7 +195,6 @@
             }
 
             let password = "";
-            // Обеспечиваем криптографическую случайность
             const array = new Uint32Array(length);
             window.crypto.getRandomValues(array);
 
@@ -191,8 +206,6 @@
 
         function copyToClipboard() {
             if (output.value === "Выберите опции!") return;
-            
-            // Используем стандартный метод для iframe совместимости
             const el = document.createElement('textarea');
             el.value = output.value;
             document.body.appendChild(el);
@@ -200,7 +213,6 @@
             document.execCommand('copy');
             document.body.removeChild(el);
             
-            // Анимация уведомления
             toast.classList.remove('opacity-0', 'translate-y-4');
             toast.classList.add('opacity-100', 'translate-y-0');
             
@@ -212,3 +224,5 @@
 
         window.onload = generatePassword;
     </script>
+</body>
+</html>

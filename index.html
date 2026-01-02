@@ -12,20 +12,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .ad-container {
-            min-height: 100px;
-            margin: 1.5rem 0;
-            display: flex;
-            justify-content: center;
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-        }
+        .ad-container { min-height: 100px; margin: 1.5rem 0; display: flex; justify-content: center; }
+        .gradient-bg { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+        .faq-card { transition: all 0.3s ease; }
+        .faq-card:hover { border-color: #6366f1; }
+        
+        /* Стили для модального окна */
+        #policyModal { display: none; }
+        #policyModal.active { display: flex; }
+        
+        /* Стили для куки */
+        #cookieBanner { display: none; }
+        #cookieBanner.active { display: block; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans relative">
 
-    <!-- Навигация -->
     <header class="bg-white border-b border-slate-200 py-4 shadow-sm">
         <div class="container mx-auto px-4">
             <div class="flex items-center space-x-2">
@@ -37,9 +39,8 @@
 
     <main class="flex-grow container mx-auto px-4 py-8 max-w-4xl">
         
-        <!-- Рекламный блок 1 (Верхний баннер) -->
+        <!-- Верхний рекламный блок -->
         <div class="ad-container">
-            <!-- Yandex.RTB R-A-18341944-1 -->
             <div id="yandex_rtb_R-A-18341944-1_top"></div>
             <script>
             window.yaContextCb.push(() => {
@@ -52,25 +53,20 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-            
-            <!-- Основной инструмент -->
             <div class="md:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-10">
                 <h1 class="text-2xl font-bold mb-2 text-slate-800">Генератор паролей</h1>
-                <p class="text-slate-500 mb-8 text-sm">Создавайте взломостойкие пароли мгновенно.</p>
+                <p class="text-slate-500 mb-8 text-sm">Создавайте взломостойкие пароли мгновенно и бесплатно.</p>
                 
-                <!-- Поле вывода -->
                 <div class="relative mb-8">
                     <input type="text" id="passwordOutput" readonly 
                         class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl py-5 px-6 text-2xl font-mono text-indigo-600 focus:ring-2 focus:ring-indigo-500 transition-all overflow-hidden text-ellipsis"
                         value="">
                     <button onclick="copyToClipboard()" 
-                        class="absolute right-3 top-1/2 -translate-y-1/2 bg-indigo-600 text-white p-4 rounded-lg hover:bg-indigo-700 transition shadow-lg active:scale-95"
-                        title="Копировать">
+                        class="absolute right-3 top-1/2 -translate-y-1/2 bg-indigo-600 text-white p-4 rounded-lg hover:bg-indigo-700 transition shadow-lg active:scale-95">
                         <i class="fas fa-copy"></i>
                     </button>
                 </div>
 
-                <!-- Настройки -->
                 <div class="space-y-8">
                     <div>
                         <div class="flex justify-between mb-3">
@@ -106,35 +102,38 @@
                 </div>
             </div>
 
-            <!-- Правая колонка -->
             <div class="space-y-6">
                 <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                    <h3 class="font-bold text-slate-800 mb-4 text-sm uppercase tracking-wide">Почему SecurePass?</h3>
-                    <ul class="text-xs text-slate-500 space-y-3">
-                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-0.5 mr-2"></i> Без передачи на сервер</li>
-                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-0.5 mr-2"></i> Открытый код</li>
-                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-0.5 mr-2"></i> Максимальная защита</li>
+                    <h3 class="font-bold text-slate-800 mb-4 text-sm uppercase tracking-wide">Важные советы</h3>
+                    <ul class="text-xs text-slate-500 space-y-4">
+                        <li class="flex items-start"><i class="fas fa-key text-indigo-500 mt-1 mr-3"></i> Не используйте один пароль для разных сайтов.</li>
+                        <li class="flex items-start"><i class="fas fa-clock text-indigo-500 mt-1 mr-3"></i> Меняйте важные пароли раз в 6 месяцев.</li>
+                        <li class="flex items-start"><i class="fas fa-user-shield text-indigo-500 mt-1 mr-3"></i> Используйте двухфакторную аутентификацию (2FA).</li>
                     </ul>
                 </div>
-
-                <!-- Место для боковой рекламы (если будет другой блок) -->
-                <div class="bg-slate-100 rounded-2xl flex items-center justify-center p-4 border border-dashed border-slate-300 min-h-[250px]">
-                    <span class="text-slate-400 text-[10px] uppercase text-center tracking-widest">Здесь может быть ваш баннер</span>
+                <!-- Место для боковой рекламы -->
+                <div class="bg-slate-100 rounded-2xl min-h-[300px] flex items-center justify-center border border-dashed border-slate-300">
+                   <span class="text-[10px] text-slate-400">Боковой баннер (РСЯ)</span>
                 </div>
             </div>
         </div>
 
-        <!-- SEO Текст -->
-        <section class="mt-12 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm leading-relaxed text-slate-600">
-            <h2 class="text-xl font-bold text-slate-800 mb-4 text-center">Как работает наш онлайн генератор паролей?</h2>
-            <p class="mb-4">
-                Наш сервис использует современные алгоритмы генерации случайных чисел в браузере. Это означает, что ни один байт информации не покидает ваш компьютер. Мы помогаем защитить ваши данные от взлома, создавая комбинации, которые практически невозможно подобрать методом перебора.
-            </p>
+        <section class="mt-12">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Часто задаваемые вопросы</h2>
+            <div class="grid gap-4">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 faq-card">
+                    <h3 class="font-bold text-slate-800 mb-2">Безопасно ли генерировать пароль онлайн?</h3>
+                    <p class="text-slate-600 text-sm font-light">Да, генерация происходит локально в вашем браузере. Мы не имеем доступа к создаваемым паролям.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 faq-card">
+                    <h3 class="font-bold text-slate-800 mb-2">Почему важна длина пароля?</h3>
+                    <p class="text-slate-600 text-sm font-light">Чем длиннее пароль, тем больше комбинаций нужно перебрать злоумышленнику. 16 символов сегодня — это золотой стандарт.</p>
+                </div>
+            </div>
         </section>
 
-        <!-- Рекламный блок 2 (Нижний баннер) -->
+        <!-- Нижний рекламный блок -->
         <div class="ad-container">
-            <!-- Yandex.RTB R-A-18341944-1 -->
             <div id="yandex_rtb_R-A-18341944-1_bottom"></div>
             <script>
             window.yaContextCb.push(() => {
@@ -148,15 +147,57 @@
 
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 py-8 mt-12">
-        <div class="container mx-auto px-4 text-center text-xs">
-            <p class="mb-2 tracking-wide font-medium">SECUREPASS TOOLS &copy; 2026</p>
-            <p>Статический инструмент для повышения вашей безопасности</p>
+    <footer class="bg-slate-900 text-slate-400 py-10 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-6 text-sm">
+                <button onclick="togglePolicy()" class="hover:text-white transition cursor-pointer">Политика конфиденциальности</button>
+                <a href="#" class="hover:text-white transition">Контакты</a>
+                <a href="#" class="hover:text-white transition">О проекте</a>
+            </div>
+            <p class="text-[10px] tracking-widest uppercase">SECUREPASS &copy;</p>
         </div>
     </footer>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl transition-all duration-300 opacity-0 pointer-events-none transform translate-y-4">
+    <!-- Баннер КУКИ -->
+    <div id="cookieBanner" class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-sm text-white p-4 z-50 border-t border-slate-700 shadow-2xl">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            <p class="text-xs md:text-sm font-light">
+                Мы используем файлы cookie для улучшения работы сайта и показа персонализированной рекламы. Продолжая использовать сайт, вы соглашаетесь с нашей 
+                <button onclick="togglePolicy()" class="underline text-indigo-400">политикой конфиденциальности</button>.
+            </p>
+            <button onclick="acceptCookies()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg text-sm font-bold transition">
+                Принять
+            </button>
+        </div>
+    </div>
+
+    <!-- Модальное окно Политики конфиденциальности -->
+    <div id="policyModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm items-center justify-center z-[100] p-4">
+        <div class="bg-white w-full max-w-2xl max-h-[80vh] rounded-2xl shadow-2xl flex flex-col">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h2 class="text-xl font-bold">Политика конфиденциальности</h2>
+                <button onclick="togglePolicy()" class="text-slate-400 hover:text-slate-600 text-2xl">&times;</button>
+            </div>
+            <div class="p-8 overflow-y-auto text-sm text-slate-600 leading-relaxed">
+                <h3 class="font-bold text-slate-800 mb-2 uppercase text-xs">1. Сбор информации</h3>
+                <p class="mb-4">Наш сервис не собирает и не хранит персональные данные пользователей. Все пароли генерируются на стороне клиента.</p>
+                
+                <h3 class="font-bold text-slate-800 mb-2 uppercase text-xs">2. Файлы Cookie</h3>
+                <p class="mb-4">Мы используем файлы cookie для работы рекламных сервисов Яндекс.RTB. Это необходимо для показа релевантных объявлений.</p>
+                
+                <h3 class="font-bold text-slate-800 mb-2 uppercase text-xs">3. Безопасность</h3>
+                <p class="mb-4">Весь программный код открыт и прозрачен. Мы используем встроенные криптографические функции браузера для обеспечения максимальной случайности паролей.</p>
+                
+                <h3 class="font-bold text-slate-800 mb-2 uppercase text-xs">4. Сторонние сервисы</h3>
+                <p>На сайте установлены скрипты Яндекса, которые могут собирать анонимные технические данные для аналитики.</p>
+            </div>
+            <div class="p-6 border-t text-right">
+                <button onclick="togglePolicy()" class="bg-slate-100 hover:bg-slate-200 px-6 py-2 rounded-lg font-bold transition">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-8 py-4 rounded-2xl shadow-2xl transition-all duration-300 opacity-0 pointer-events-none transform translate-y-4 z-[60]">
         <i class="fas fa-check-circle text-green-400 mr-2"></i> Пароль скопирован в буфер
     </div>
 
@@ -165,6 +206,27 @@
         const lengthVal = document.getElementById('lengthVal');
         const output = document.getElementById('passwordOutput');
         const toast = document.getElementById('toast');
+        const cookieBanner = document.getElementById('cookieBanner');
+        const policyModal = document.getElementById('policyModal');
+
+        // Логика Куки
+        window.onload = function() {
+            generatePassword();
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(() => cookieBanner.classList.add('active'), 1000);
+            }
+        };
+
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.classList.remove('active');
+        }
+
+        // Логика Модалки
+        function togglePolicy() {
+            policyModal.classList.toggle('active');
+            document.body.style.overflow = policyModal.classList.contains('active') ? 'hidden' : 'auto';
+        }
 
         lengthInput.addEventListener('input', () => {
             lengthVal.innerText = lengthInput.value;
@@ -189,15 +251,11 @@
             if (hasNumbers) allChars += numChars;
             if (hasSymbols) allChars += symChars;
 
-            if (allChars === "") {
-                output.value = "Выберите опции!";
-                return;
-            }
+            if (allChars === "") { output.value = "Выберите опции!"; return; }
 
             let password = "";
             const array = new Uint32Array(length);
             window.crypto.getRandomValues(array);
-
             for (let i = 0; i < length; i++) {
                 password += allChars[array[i] % allChars.length];
             }
@@ -212,17 +270,13 @@
             el.select();
             document.execCommand('copy');
             document.body.removeChild(el);
-            
             toast.classList.remove('opacity-0', 'translate-y-4');
             toast.classList.add('opacity-100', 'translate-y-0');
-            
             setTimeout(() => {
                 toast.classList.add('opacity-0', 'translate-y-4');
                 toast.classList.remove('opacity-100', 'translate-y-0');
             }, 2500);
         }
-
-        window.onload = generatePassword;
     </script>
 </body>
 </html>
